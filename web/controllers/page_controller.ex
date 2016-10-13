@@ -3,9 +3,18 @@ defmodule HelloPhoenix.PageController do
 
   def index(conn, params) do
   	# conn
-  	# |> put_layout("admin.html")
    #  |> render :index, message: params["message"]
-   	redirect conn, to: redirect_test_path(conn, :redirect_test)
+   	# redirect conn, to: redirect_test_path(conn, :redirect_test)
+
+   	pages = [%{title: "foo"}, %{title: "bar"}]
+
+   	render conn, "index.json", pages: pages
+  end
+
+  def show(conn, _params) do
+  	page = %{title: "foo"}
+
+  	render conn, "show.json", page: page
   end
 
   def redirect_test(conn, _params) do
